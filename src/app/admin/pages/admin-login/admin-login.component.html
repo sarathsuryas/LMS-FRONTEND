@@ -1,0 +1,45 @@
+  
+  <div class="flex justify-center items-center h-screen bg-blue-400"> 
+    <mat-card class="p-8 w-full max-w-md">
+      <div class="flex justify-center items-center"><h1>Admin Login</h1></div>
+      <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"  class="flex flex-col gap-4" >
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+            <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+              Email is required.
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+              Enter a valid email.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+              Password is required.
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+              Password must be at least 8 characters long.
+            </mat-error>
+          </mat-form-field>
+          <div class="flex justify-center">
+            <button [disabled]="isLoading" class="disabled:cursor-not-allowed disabled:opacity-60"  mat-raised-button style="background-color: green; color: white;" type="submit">
+              <mat-spinner color="accent" *ngIf="isLoading" diameter="30" strokeWidth="2"></mat-spinner>
+               <span *ngIf="!isLoading">Submit</span>
+            </button>
+          </div>
+        </form>
+        <div class="flex justify-center mt-4">
+          <p>
+            Don't have an account? <a routerLink="/register">Register here</a>
+          </p>
+          
+        </div>
+      </mat-card-content>
+    </mat-card>
+</div>

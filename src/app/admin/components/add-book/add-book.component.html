@@ -1,0 +1,46 @@
+<mat-dialog-content class="mat-typography">
+    <form class="flex flex-col p-4" [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="title" placeholder="Enter book title" />
+          <mat-error *ngIf="bookForm.get('title')?.hasError('required')">
+            Title is required.
+          </mat-error>
+        </mat-form-field>
+      
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Genre</mat-label>
+          <mat-select formControlName="genre" placeholder="Select genre">
+            <mat-option value="fiction">Fiction</mat-option>
+            <mat-option value="non-fiction">Non-Fiction</mat-option>
+            <mat-option value="fantasy">Fantasy</mat-option>
+            <mat-option value="science">Science</mat-option>
+          </mat-select>
+          <mat-error *ngIf="bookForm.get('genre')?.hasError('required')">
+            Genre is required.
+          </mat-error>
+        </mat-form-field>
+      
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Pages</mat-label>
+          <input
+            matInput
+            formControlName="pages"
+            placeholder="Enter number of pages"
+            type="number"
+          />
+          <mat-error *ngIf="bookForm.get('pages')?.hasError('required')">
+            Pages are required.
+          </mat-error>
+          <mat-error *ngIf="bookForm.get('pages')?.hasError('pattern')">
+            Please enter a valid number.
+          </mat-error>
+        </mat-form-field>      
+        <button mat-raised-button color="primary" type="submit" [disabled]="bookForm.invalid">
+          Submit
+        </button>
+      </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button style="background-color: red;" mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

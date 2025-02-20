@@ -1,0 +1,67 @@
+<div class="demo-button-container">
+    <div *ngIf="isLoading" class="loading-shade">
+        <mat-spinner diameter="40"></mat-spinner>
+      </div>
+    <button mat-raised-button (click)="addBook()" class="demo-button">
+      Add Book
+    </button>
+   
+  </div>
+  <div class="table-container">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+        <!-- Position Column -->
+        <ng-container matColumnDef="bookNo">
+          <th mat-header-cell *matHeaderCellDef>Book No.</th>
+          <td mat-cell *matCellDef="let element; let i = index">{{i+1}}</td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef>Title</th>
+          <td mat-cell *matCellDef="let element">{{element.title}}</td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="genre">
+          <th mat-header-cell *matHeaderCellDef>Genre</th>
+          <td mat-cell *matCellDef="let element">{{element.genre}}</td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="pages">
+          <th mat-header-cell *matHeaderCellDef>Pages</th>
+          <td mat-cell *matCellDef="let element">{{element.pages}}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td  mat-cell *matCellDef="let element">{{element.status? "Available":"Borrowed"}}</td>
+          </ng-container>
+    
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element; let i =index">
+                <button [matMenuTriggerFor]="selectMenu" style="background-color: #4CAF50; color: white;" mat-button >
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <mat-menu #selectMenu="matMenu" xPosition="before">
+                    <button mat-menu-item  (click)="edit(element,i)">Edit Book</button>
+                    <button mat-menu-item>Borrower Details</button>
+                </mat-menu>
+            </td>
+          </ng-container>
+         
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr   [style.background-color]="row.highlighted ? '#d1ffd1' : ''"
+            mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator
+    [pageSizeOptions]="pageSizeOptions"
+    [pageSize]="pageSize"
+    [pageIndex]="currentPage"
+    [length]="totalItems"
+    (page)="onPageChange($event)"
+    showFirstLastButtons
+  ></mat-paginator>
+  </div>
+  

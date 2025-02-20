@@ -1,0 +1,89 @@
+<div class="h-screen bg-green-400 flex justify-center items-center">
+    <mat-card class="custom-card">
+        <div class="flex justify-center items-center bg-green-400">
+            <h1>Books of Life</h1>
+        </div>
+        <mat-card-content class="bg-green-300 p-10">
+            <div class="flex justify-center items-center text-black mt-4">
+                <h1>Admin/User Registration</h1>
+            </div>
+            <form class="grid grid-cols-3 gap-4" [formGroup]="registerForm" (ngSubmit)="register()">
+                <mat-form-field>
+                    <mat-label>Username</mat-label>
+                    <input matInput placeholder="John Doe" Alphabetsonly
+                        formControlName="username">
+                    @if (registerForm.controls['username'].hasError('required')) {
+                    <mat-error>username is required</mat-error>
+                    }@else if (registerForm.controls['username'].hasError('Alphabetsonly')) {
+                    <mat-error>username is not valid</mat-error>
+                    }
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput
+                     formControlName="email"
+                    >
+                    @if (registerForm.controls['email'].hasError('required')) {
+                           <mat-error>email is required</mat-error>
+                    } @else if (registerForm.controls['email'].hasError('email')) {
+                          <mat-error>email is not valid</mat-error>
+                    }
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Address</mat-label>
+                    <input matInput formControlName="address">
+                    @if (registerForm.controls['address'].hasError('required')) {
+                       <mat-error>address is required</mat-error>
+                    }
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Roles</mat-label>
+                    <mat-select formControlName="role">
+                        <mat-option [value]="role" *ngFor="let role of roles">{{role}}</mat-option>
+                    </mat-select>
+                    @if (registerForm.controls['role'].hasError('required')) {
+                        <mat-error>please select one</mat-error>
+                    }
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Enter your password</mat-label>
+                    <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    @if (registerForm.controls['password'].hasError('required')) {
+                        <mat-error>password is required</mat-error>
+                    }
+                    @else if (registerForm.controls['password'].hasError('minlength')) {
+                        <mat-error>password length at least 8 chars</mat-error>
+                    }
+                  </mat-form-field>
+               
+                  <mat-form-field>
+                    <mat-label>Confirm Password</mat-label>
+                    <input
+                     matInput [type]="hideConfirm ? 'password' : 'text'" formControlName="confirmPassword">
+                    <button mat-icon-button matSuffix (click)="hideConfirm = !hideConfirm" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirm">
+                      <mat-icon>{{hideConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                   
+                    <mat-error  *ngIf="registerForm.errors?.['passwordMismatch'] && 
+                    registerForm.get('confirmPassword')?.touched">Password does not match</mat-error>
+                  </mat-form-field>
+                               
+                  <div class="flex mt-2">
+                    <button 
+                      [disabled]="registerForm.invalid"
+                      [ngStyle]="{ background: registerForm.invalid ? '#b0b0b0' : '#4CAF50' }" 
+                      type="submit"
+                      class=" text-white font-medium rounded-lg text-sm px-5 py-2.5 
+                             focus:outline-none focus:ring-4 transition-all
+                             hover:bg-green-600 disabled:cursor-not-allowed disabled:opacity-60">
+                      Submit
+                    </button>
+                  </div>
+                  
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

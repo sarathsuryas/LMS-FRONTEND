@@ -1,0 +1,23 @@
+.example-container {
+    height: 100vh;
+    background: #eee;
+}
+  mat-drawer {
+    width: 210px;
+    background-color:bisque;
+  }
+mat-toolbar {
+  background-color: violet;  
+}
+mat-nav-list {
+    margin-top: 49px;
+}
+a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+}
+a:hover {
+    background-color: aquamarine;
+}
