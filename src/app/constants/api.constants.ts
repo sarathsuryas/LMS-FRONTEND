@@ -14,6 +14,13 @@ export const API_URLS = {
       BASE:`${environment.api}/admin/book`,
       CREATE:`${environment.api}/admin/book/create`,
       READ:`${environment.api}/admin/book/get-books`,
-      EDIT:`${environment.api}/admin/book/edit`
-     } 
+      EDIT:`${environment.api}/admin/book/edit`,
+     },
+     USERBOOK:{
+      BASE:`${environment.api}/book`,
+      ALL:`${environment.api}/book/all`,
+      BOOKTRANSACTION:`${environment.api}/book/book-transaction`,
+      BOOKHISTORY:`${environment.api}/book/book-history`,
+      RETURN:`${environment.api}/book/return`
+     }
 }

@@ -20,7 +20,17 @@ export const routes: Routes = [
     },
     {
         path:'home',
-        loadComponent:()=> import('./user/pages/user-home/user-home.component').then(c=>c.UserHomeComponent)
+        loadComponent:()=> import('./user/pages/user-home/user-home.component').then(c=>c.UserHomeComponent),
+        children:[
+            {
+                path:'books',
+                loadComponent:()=> import('./user/components/book-table/book-table.component').then(c=>c.BookTableComponent)
+            },
+            {
+                path:'transaction',
+                loadComponent:()=> import('./user/components/book-history-table/book-history-table.component').then(c=>c.BookHistoryTableComponent)
+            }
+        ]
     },
     {
         path:'admin/home',
@@ -29,7 +39,8 @@ export const routes: Routes = [
             {
             path:'dashboard',
             loadComponent:()=> import('./admin/components/dashboard-table/dashboard-table.component').then(c=>c.DashboardTableComponent)
-            }
+            },
+            
         ]
     },
 ];

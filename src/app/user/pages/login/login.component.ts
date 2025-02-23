@@ -50,7 +50,7 @@ export class LoginComponent {
       next:(value)=>{
         this.isLoading = false
         this.loginForm.reset()
-        this._cookieService.set('adminToken',value.token,{path:'/admin'})
+        this._cookieService.set('userToken',value.token,{path:'/'})
         this._router.navigate(['home'])
       },
       error:(err)=>{

@@ -1,0 +1,8 @@
+.example-container {
+    height: 100vh;
+    background: #eee;
+  }
+  mat-drawer{
+    width: 200px;
+    background-color: bisque;
+  }
