@@ -3,7 +3,12 @@
 <div>
     <mat-drawer-container class="example-container">
         <mat-drawer  mode="side" opened>
-
+            <mat-nav-list >
+                <a  mat-list-item [routerLink]="item.route" *ngFor="let item of navItems">
+                  <mat-icon>{{ item.icon }}</mat-icon>
+                  <span class="ml-4">{{ item.label }}</span>
+                </a>
+              </mat-nav-list>
         </mat-drawer>
         <mat-drawer-content>
             <mat-toolbar color="primary">

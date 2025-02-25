@@ -6,3 +6,15 @@
     width: 200px;
     background-color: bisque;
   }
+  mat-nav-list {
+    margin-top: 49px;
+}
+a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+}
+a:hover {
+    background-color: aquamarine;
+}

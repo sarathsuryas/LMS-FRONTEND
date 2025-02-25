@@ -36,7 +36,6 @@ export class BookHistoryTableComponent {
 
   // Return a book
   return(element: any) {
-    console.log(element.bookData._id);
     this._bookService.return(element.bookData._id).subscribe(() => {
       this.loadBookHistory(); 
     });

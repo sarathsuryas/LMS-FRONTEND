@@ -23,8 +23,10 @@ import { Observable } from 'rxjs';
 })
 export class AdminHomeComponent {
   navItems = [
-    { label: 'Dashboard', icon: 'dashboard', route: '/dashboard' },
-    { label: 'Book History', icon: 'history', route: '/book-history' },
+    { label: 'Dashboard', icon: 'dashboard', route: '/admin/home/dashboard' },
+    { label: 'Book History', icon: 'history', route: '/admin/home/history' },
+    { label: 'Profile', icon: 'account_circle', route: '/admin/home/profile' },
+
   ];
   
 

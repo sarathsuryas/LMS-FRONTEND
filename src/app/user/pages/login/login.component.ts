@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { Router, RouterModule } from '@angular/router';
 import {MatInputModule} from '@angular/material/input';
@@ -28,7 +28,7 @@ import { CookieService } from 'ngx-cookie-service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   hide = true;
   loginForm!: FormGroup;
   isLoading = false
@@ -43,6 +43,11 @@ export class LoginComponent {
     password: ['', [Validators.required, Validators.minLength(8)]], 
   });
  }
+  ngOnInit(): void {
+   if(this._cookieService.get('userToken')) {
+      this._router.navigate(['home/books'])
+   }
+  }
  onSubmit() {
    if (this.loginForm.valid) {
     this.isLoading = true
@@ -51,7 +56,7 @@ export class LoginComponent {
         this.isLoading = false
         this.loginForm.reset()
         this._cookieService.set('userToken',value.token,{path:'/'})
-        this._router.navigate(['home'])
+        this._router.navigate(['home/books'])
       },
       error:(err)=>{
        this._matSnackbar.open(err.error.message,'close').afterDismissed()

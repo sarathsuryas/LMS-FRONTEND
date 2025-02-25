@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -28,7 +28,7 @@ import { AdminAuthService } from '../../services/admin-auth.service';
   templateUrl: './admin-login.component.html',
   styleUrl: './admin-login.component.css'
 })
-export class AdminLoginComponent {
+export class AdminLoginComponent implements OnInit {
  hide = true;
   loginForm!: FormGroup;
   isLoading = false
@@ -43,6 +43,11 @@ export class AdminLoginComponent {
     password: ['', [Validators.required, Validators.minLength(8)]], 
   });
  }
+  ngOnInit(): void {
+    if(this._cookieService.get('adminToken')) {
+      this._router.navigate(['admin/home/dashboard'])
+   }
+  }
  onSubmit() {
    if (this.loginForm.valid) {     
     this.isLoading = true

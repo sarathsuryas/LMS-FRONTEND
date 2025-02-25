@@ -34,4 +34,7 @@ export class BookService {
 return(bookId:string) {
   return this._http.patch(`${API_URLS.USERBOOK.RETURN}`,{bookId})
 }
+bookTransaction() {
+  return this._http.get(`${API_URLS.BOOK.TRANSACTIONS}`)
+}
 }

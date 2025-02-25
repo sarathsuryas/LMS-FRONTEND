@@ -1,0 +1,69 @@
+<div class="flex justify-center items-center p-8">
+    <mat-card class="w-full max-w-md">
+      <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <mat-form-field style="display: none;" class="w-full">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="data"/>
+                <mat-error *ngIf="form.controls['data']?.hasError('required')">
+                  Email is required
+                </mat-error>
+                <mat-error *ngIf="form.controls['data']?.hasError('email')">
+                  Please enter a valid email address
+                </mat-error>
+              </mat-form-field>
+          <!-- Email Field -->
+          <mat-form-field class="w-full">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+            <mat-error *ngIf="form.controls['email']?.hasError('required')">
+              Email is required
+            </mat-error>
+            <mat-error *ngIf="form.controls['email']?.hasError('email')">
+              Please enter a valid email address
+            </mat-error>
+          </mat-form-field>
+  
+          <!-- Username Field -->
+          <mat-form-field class="w-full">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" />
+            <mat-error *ngIf="form.controls['username']?.hasError('required')">
+              Username is required
+            </mat-error>
+            <mat-error *ngIf="form.controls['username']?.hasError('minlength')">
+              Username must be at least 3 characters
+            </mat-error>
+          </mat-form-field>
+  
+          <!-- Select Field -->
+          <mat-form-field class="w-full">
+            <mat-label>Select</mat-label>
+            <mat-select formControlName="selection">
+              <mat-option value="Admin">Admin</mat-option>
+              <mat-option value="User">User</mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+          <!-- Buttons -->
+          <div class="flex justify-between mt-4">
+            <button mat-raised-button color="primary" type="button" (click)="toggleEdit()">
+              {{ disabled ? 'Edit' : 'Disable' }}
+            </button>
+            <button mat-raised-button color="accent" type="submit" [disabled]="form.invalid">
+              Submit
+            </button>
+          </div>
+  
+          <!-- Logout Button -->
+          
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="flex justify-center mt-4">
+    <button mat-raised-button color="warn" type="button" (click)="logout()">
+      Logout
+    </button>
+  </div>
+  
