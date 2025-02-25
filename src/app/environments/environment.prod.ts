@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    api:'https://lms-backend-5ior.onrender.com'
+    api:'https://lms-backend-rx0v.onrender.com'
 }
