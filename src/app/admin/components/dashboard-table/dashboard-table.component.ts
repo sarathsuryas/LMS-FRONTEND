@@ -97,7 +97,9 @@ export class DashboardTableComponent implements OnInit{
         next:(value)=>{
           this.dataSource.pop()
           this.dataSource.unshift(obj)
+          this.loadData()
           this.table.renderRows();
+          
           this._snackBar.open(value.message,"close",{duration:2000})
           setTimeout(()=>{
             obj.highlighted = false
