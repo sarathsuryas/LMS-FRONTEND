@@ -3,12 +3,11 @@ import { inject } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
-   const cookieService =  inject(CookieService)
    let modifiedReq = req
   if(req.url.includes('/admin')) {
      modifiedReq =  modifiedReq.clone({
         setHeaders:{
-          Authorization:`Bearer ${cookieService.get('adminToken')}`
+          Authorization:`Bearer ${localStorage.getItem('adminToken')}`
         }
       })
       console.log('Authorization Header:', modifiedReq.headers.get('Authorization'));
@@ -16,7 +15,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   } else {
     modifiedReq = modifiedReq.clone({
       setHeaders:{
-        Authorization:`Bearer ${cookieService.get('userToken')}`
+        Authorization:`Bearer ${localStorage.getItem('userToken')}`
       }
     })
     return next(modifiedReq)

@@ -3,9 +3,8 @@ import { CanActivateFn } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
 export const userGuard: CanActivateFn = (route, state) => {
-  const cookieService = inject(CookieService);
 
-  const userToken = cookieService.get('userToken');
+  const userToken = localStorage.getItem('userToken')
   if (userToken) {
     return true; 
   } else {

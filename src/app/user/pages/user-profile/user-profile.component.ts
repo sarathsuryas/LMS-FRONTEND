@@ -71,7 +71,7 @@ export class UserProfileComponent implements OnInit{
     }
   }
   logout() {
-     this._cookieService.delete('userToken')
+    localStorage.removeItem('userToken')
     this._router.navigate(['']); 
   }
   

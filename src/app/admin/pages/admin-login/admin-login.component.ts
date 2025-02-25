@@ -44,7 +44,7 @@ export class AdminLoginComponent implements OnInit {
   });
  }
   ngOnInit(): void {
-    if(this._cookieService.get('adminToken')) {
+    if(localStorage.getItem('adminToken')) {
       this._router.navigate(['admin/home/dashboard'])
    }
   }
@@ -55,7 +55,7 @@ export class AdminLoginComponent implements OnInit {
       next:(value)=>{
         this.isLoading = false
         this.loginForm.reset()
-        this._cookieService.set('adminToken',value.token,{path:'/admin'})
+        localStorage.setItem('adminToken',value.token)
         this._router.navigate(['admin/home/dashboard'])
       },
       error:(err)=>{

@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
   });
  }
   ngOnInit(): void {
-   if(this._cookieService.get('userToken')) {
+   if(localStorage.getItem('userToken')) {
       this._router.navigate(['home/books'])
    }
   }
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
       next:(value)=>{
         this.isLoading = false
         this.loginForm.reset()
-        this._cookieService.set('userToken',value.token,{path:'/'})
+        localStorage.setItem('userToken',value.token)
         this._router.navigate(['home/books'])
       },
       error:(err)=>{

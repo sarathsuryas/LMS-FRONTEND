@@ -73,7 +73,7 @@ export class AdminProfileComponent {
       }
     }
     logout() {
-      this._cookieService.delete('adminToken')
+      localStorage.removeItem('adminToken')
       this._router.navigate(['admin']); 
     }
     
