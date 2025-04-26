@@ -42,11 +42,10 @@ export class BookHistoryTableComponent {
   }
 
   // Return a book
-  return(element: BookData) {
+  return(element: BookData,historyId:string) {
     this.isReturning = true;
-    console.log(element)
 
-    this._bookService.return(element._id).subscribe({
+    this._bookService.return(element._id,historyId).subscribe({
     
       next: () => {
       this.isReturning = false;

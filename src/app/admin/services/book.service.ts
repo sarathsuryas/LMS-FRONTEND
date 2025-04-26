@@ -31,8 +31,8 @@ export class BookService {
  bookHistory():Observable<IHistory[]> {
   return this._http.get<IHistory[]>(`${API_URLS.USERBOOK.BOOKHISTORY}`)
  }
-return(bookId:string) {
-  return this._http.patch(`${API_URLS.USERBOOK.RETURN}`,{bookId})
+return(bookId:string,historyId:string) {
+  return this._http.patch(`${API_URLS.USERBOOK.RETURN}`,{bookId,historyId})
 }
 bookTransaction() {
   return this._http.get(`${API_URLS.BOOK.TRANSACTIONS}`)

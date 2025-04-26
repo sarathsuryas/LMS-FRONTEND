@@ -24,7 +24,7 @@
         <th mat-header-cell *matHeaderCellDef> status</th>
         <td mat-cell *matCellDef="let element"> 
             <button
-            (click)="return(element.bookData)" 
+            (click)="return(element.bookData,element._id)" 
             [disabled]="!element.status"
             style="background-color: green; color:aliceblue" mat-button>Return</button>     
         </td>
