@@ -27,7 +27,7 @@ export const API_URLS = {
      USER:{
       USERDATA:`${environment.api}/user/user-data`,
       EDIT:`${environment.api}/user/edit`
-     },
+     }, 
      ADMIN:{
       BASE: `${environment.api}/admin`,
       ADMINDATA:`${environment.api}/admin/admin-data`,

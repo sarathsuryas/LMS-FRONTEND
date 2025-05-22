@@ -1,0 +1,30 @@
+/* Header styling */
+.status-header {
+  font-weight: bold;
+  color: #555;
+  text-align: center;
+}
+
+/* Chip styles */
+.status-chip {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  text-transform: capitalize;
+  min-width: 80px;
+}
+
+/* Borrowed style */
+.status-chip.borrowed {
+  background-color: #ffe082; /* Amber 200 */
+  color: #ff6f00; /* Amber 800 */
+}
+
+/* Returned style */
+.status-chip.returned {
+  background-color: #c8e6c9; /* Green 100 */
+  color: #2e7d32; /* Green 800 */
+}

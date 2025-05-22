@@ -20,8 +20,7 @@
             Genre is required.
           </mat-error>
         </mat-form-field>
-      
-        <mat-form-field appearance="fill" class="form-field">
+          <mat-form-field appearance="fill" class="form-field">
           <mat-label>Pages</mat-label>
           <input
             matInput
@@ -35,7 +34,8 @@
           <mat-error *ngIf="bookForm.get('pages')?.hasError('pattern')">
             Please enter a valid number.
           </mat-error>
-        </mat-form-field>      
+        </mat-form-field>  
+      
         <button mat-raised-button color="primary" type="submit" [disabled]="bookForm.invalid">
           Submit
         </button>

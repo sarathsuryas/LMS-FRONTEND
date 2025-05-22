@@ -1,8 +1,15 @@
 <h2 mat-dialog-title>Borrow Book</h2>
 <mat-dialog-content>
-  Would you like to Borrow The Book
+  Would you like to Borrow The Book 
+  <br>
+
+<mark class="bg-red-600">{{futureDate.toLocaleDateString()}}</mark>  
+<p>Return Date</p>
 </mat-dialog-content>
+<section class="example-section ml-5">
+   <mat-checkbox class="example-margin" [(ngModel)]="checked">Accept</mat-checkbox>
+ </section>
 <mat-dialog-actions>
   <button (click)="close(false)" mat-button >No</button>
-  <button (click)="close(true)" mat-button  cdkFocusInitial>Ok</button>
+  <button [disabled]="!checked" (click)="close(true)" mat-button   cdkFocusInitial>Ok</button>
 </mat-dialog-actions>

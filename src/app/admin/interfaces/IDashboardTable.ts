@@ -5,4 +5,5 @@ export interface IDashboardTable {
     pages:number;
     status:string;
      highlighted:boolean;
+     quantity:number
   }

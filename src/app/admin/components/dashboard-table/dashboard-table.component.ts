@@ -86,12 +86,15 @@ export class DashboardTableComponent implements OnInit{
         genre: result.genre,
         pages: result.pages,
         status: result.status,
-        highlighted: true
+
+        highlighted: true,
+        quantity: result.quantity
       }
       const dto:CreateBookDto = {
         title: obj.title,
-        genre:obj.genre,
-        pages: obj.pages
+        genre: obj.genre,
+        pages: obj.pages,
+        quantity: obj.quantity
       }
       this._bookService.create(dto).subscribe({
         next:(value)=>{
@@ -99,7 +102,6 @@ export class DashboardTableComponent implements OnInit{
           this.dataSource.unshift(obj)
           this.loadData()
           this.table.renderRows();
-          
           this._snackBar.open(value.message,"close",{duration:2000})
           setTimeout(()=>{
             obj.highlighted = false

@@ -25,7 +25,7 @@ export class BookService {
   getAllBooks(currentPage:number,limit:number,filter:string):Observable<{data:IBook[],count:number}> {
     return this._http.get<{data:IBook[],count:number}>(`${API_URLS.USERBOOK.ALL}?page=${currentPage}&limit=${limit}&filter=${filter}`)
   }
- Borrow(obj:{adminId:string,bookId:string}) {
+ Borrow(obj:{adminId:string,bookId:string,currentDate:Date,returnDate:Date}) {
   return this._http.patch(`${API_URLS.USERBOOK.BOOKTRANSACTION}`,obj)
  }
  bookHistory():Observable<IHistory[]> {
